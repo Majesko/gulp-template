@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "bower": "*",
+    "browser-sync": "*",
+    "gulp": "*",
+    "gulp-sass": "*",
+    "gulp-jade": "*"
+  }
+}
