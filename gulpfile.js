@@ -2,6 +2,7 @@ var gulp        = require('gulp'),
     sass        = require('gulp-sass'),
     jade        = require('gulp-jade'),
     plumber     = require('gulp-plumber'),
+    concat      = require('gulp-concat'),
     browserSync = require('browser-sync'),
     reload      = browserSync.reload;
 
@@ -21,6 +22,7 @@ gulp.task('serve', ['sass', 'jade'], function() {
 
   gulp.watch("src/scss/*.scss", ['sass']);
   gulp.watch("src/jade/*.jade", ['jade']);
+  gulp.watch("src/js/*.js",     ['js']);
 
 });
 
@@ -41,6 +43,13 @@ gulp.task('jade', function () {
             pretty: true
         }))
         .pipe(gulp.dest('./dist/'))
+        .pipe(reload({stream: true}));
+});
+
+gulp.task('js', function () {
+    gulp.src('./src/js/*.js')
+        .pipe(concat('app.js'))
+        .pipe(gulp.dest('./dist/js/'))
         .pipe(reload({stream: true}));
 });
 

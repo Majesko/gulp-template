@@ -3,6 +3,7 @@
     "bower": "*",
     "browser-sync": "*",
     "gulp": "*",
+    "gulp-concat": "^2.5.2",
     "gulp-jade": "*",
     "gulp-plumber": "^1.0.0",
     "gulp-sass": "*"
