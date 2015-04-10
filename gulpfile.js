@@ -1,6 +1,7 @@
 var gulp        = require('gulp'),
     sass        = require('gulp-sass'),
     jade        = require('gulp-jade'),
+    plumber     = require('gulp-plumber'),
     browserSync = require('browser-sync'),
     reload      = browserSync.reload;
 
@@ -9,7 +10,7 @@ gulp.task('serve', ['sass', 'jade'], function() {
 
   browserSync({
 
-    server: { baseDir: "./app/" }
+    server: { baseDir: "./dist/" }
 
   });
 
@@ -18,14 +19,15 @@ gulp.task('serve', ['sass', 'jade'], function() {
   // gulp.watch("app/css/*.css").on('change', reload);
   // gulp.watch("app/js/*.js").on('change', reload);
 
-  gulp.watch("./src/scss/*.scss", ['sass']);
-  gulp.watch("./src/jade/*.jade", ['jade']);
+  gulp.watch("src/scss/*.scss", ['sass']);
+  gulp.watch("src/jade/*.jade", ['jade']);
 
 });
 
 gulp.task('sass', function () {
 
     gulp.src('./src/scss/*.scss')
+        .pipe(plumber())
         .pipe(sass())
         .pipe(gulp.dest('./dist/css'))
         .pipe(reload({stream: true})
@@ -34,6 +36,7 @@ gulp.task('sass', function () {
 
 gulp.task('jade', function () {
     gulp.src('./src/jade/*.jade')
+        .pipe(plumber())
         .pipe(jade({
             pretty: true
         }))

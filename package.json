@@ -3,7 +3,8 @@
     "bower": "*",
     "browser-sync": "*",
     "gulp": "*",
-    "gulp-sass": "*",
-    "gulp-jade": "*"
+    "gulp-jade": "*",
+    "gulp-plumber": "^1.0.0",
+    "gulp-sass": "*"
   }
 }
