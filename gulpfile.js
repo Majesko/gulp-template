@@ -1,6 +1,6 @@
 var gulp        = require('gulp'),
-    gulp-sass   = require('gulp-sass'),
-    gulp-jade   = require('gulp-jade'),
+    sass        = require('gulp-sass'),
+    jade        = require('gulp-jade'),
     browserSync = require('browser-sync'),
     reload      = browserSync.reload;
 
@@ -36,10 +36,9 @@ gulp.task('jade', function () {
     gulp.src('./src/jade/*.jade')
         .pipe(jade({
             pretty: true
-        })
+        }))
         .pipe(gulp.dest('./dist/'))
-        .pipe(reload({stream: true})
-    );
+        .pipe(reload({stream: true}));
 });
 
 gulp.task('default', ['serve']);
